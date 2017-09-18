@@ -1,0 +1,73 @@
+<html>
+    <head>
+            <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Management/style.css' %}" type="text/css">
+
+        {% block head %}
+        <title>Base</title>
+
+      {% endblock %}
+    </head>
+
+    <body>
+
+    <br>
+
+    <div class="container" >
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Event Management</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+             {% if user.is_authenticated %}
+
+             <ul class="nav navbar-nav">
+                 <li><a href="{% url 'Management:Home' %}">Home</a> </li>
+                 <li><a href="{% url 'Management:Enventory' %}">Enventory</a> </li>
+                 <li><a href="{% url 'Management:AddProduct' %}">Add_Product</a> </li>
+                 <li><a href="{% url 'Management:IssueProduct' %}">Issue_Product</a> </li>
+                 <li><a href="{% url 'Management:Maintenance' %}">Maintenance</a> </li>
+
+
+             </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                      <li class="na"><a href="{% url 'Management:logout' %}">logout</a> </li>
+                 </ul>
+             {% else %}
+
+
+         <ul class="nav navbar-nav navbar-right">
+             <li class="na"><a href="{% url 'Management:login' %}">login</a> </li>
+
+            <li><a href="{% url 'Management:register' %}">Register</a></li>
+
+          </ul>
+            {% endif %}
+        </div>
+        </div>
+        </nav>
+    </div>
+
+
+        {% block body %}
+            <h1>Base</h1>
+        {% endblock %}
+
+    </body>
+
+
+</html>
